@@ -11,12 +11,14 @@ body {
     background-attachment: fixed;
     color: #333;
     line-height: 1.6;
+    transition: all 0.3s ease;
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0.8);
+    background: linear-gradient(135deg, #ff5500, #ffcc33);
     padding: 1.5em;
     text-align: center;
+    border-radius: 10px;
 }
 
 nav ul {
@@ -27,18 +29,25 @@ nav ul {
 }
 
 nav a {
-    color: #ff5500;
+    color: white;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffcc33;
 }
 
 section {
     padding: 2em;
-    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95); /* Fondo con mayor opacidad */
+    border: 1px solid rgba(255, 255, 255, 0.2);
     margin: 1em auto;
     max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.8s ease-in-out;
 }
 
 h2 {
@@ -57,12 +66,18 @@ h2 {
     display: flex;
     gap: 1em;
     align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .content-header img {
     width: 120px;
     height: auto;
     border-radius: 8px;
+}
+
+.content-header:hover {
+    transform: translateY(-3px);
 }
 
 button {
@@ -73,18 +88,82 @@ button {
     cursor: pointer;
     font-size: 1em;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background-color: #ff5500;
+    background-color: #cc4400;
+    transform: translateY(-2px);
 }
 
 footer {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.95);
     text-align: center;
     padding: 1em;
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Estilo para la sección de juegos */
+#juegos {
+    padding: 2em;
+    margin: 1em auto;
+    max-width: 800px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.crucigrama-grid, .sopa-grid {
+    display: grid;
+    gap: 2px;
+    margin-top: 1em;
+}
+
+.crucigrama-grid {
+    grid-template-columns: repeat(8, 40px);
+    grid-template-rows: repeat(8, 40px);
+}
+
+.sopa-grid {
+    grid-template-columns: repeat(12, 30px);
+    grid-template-rows: repeat(12, 30px);
+}
+
+.cell, .sopa-cell {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.sopa-cell {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+/* Animación de aparición */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

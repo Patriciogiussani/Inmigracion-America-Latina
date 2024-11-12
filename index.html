@@ -14,6 +14,7 @@
             <ul>
                 <li><a href="#informacion">Información</a></li>
                 <li><a href="#actividades">Actividades</a></li>
+                <li><a href="#juegos">Juegos</a></li>
             </ul>
         </nav>
     </header>
@@ -81,20 +82,18 @@
         <div id="quiz">
             <h3>Cuestionario: ¿Qué tanto sabes sobre migración?</h3>
             <!-- Preguntas de Verdadero o Falso -->
-            <div>
-                <p>1. La migración es un fenómeno reciente en América Latina. <b>Verdadero o Falso</b></p>
-                <button onclick="checkAnswer('verdadero', false)">Verdadero</button>
-                <button onclick="checkAnswer('falso', true)">Falso</button>
-            </div>
+            <p>1. La migración intrarregional en América Latina suele ocurrir entre países con vínculos económicos y culturales. <b>Verdadero o Falso</b></p>
+            <button onclick="checkAnswer('verdadero', true)">Verdadero</button>
+            <button onclick="checkAnswer('falso', false)">Falso</button>
             <div>
                 <p>2. La mayoría de los migrantes de América Latina se dirigen a Europa. <b>Verdadero o Falso</b></p>
                 <button onclick="checkAnswer('verdadero', false)">Verdadero</button>
                 <button onclick="checkAnswer('falso', true)">Falso</button>
             </div>
             <div>
-                <p>3. La migración intrarregional es común en América Latina. <b>Verdadero o Falso</b></p>
-                <button onclick="checkAnswer('verdadero', true)">Verdadero</button>
-                <button onclick="checkAnswer('falso', false)">Falso</button>
+                <p>3. La Gran Depresión impulsó una ola masiva de inmigración hacia América Latina. <b>Verdadero o Falso</b></p>
+                <button onclick="checkAnswer('verdadero', false)">Verdadero</button>
+                <button onclick="checkAnswer('falso', true)">Falso</button>
             </div>
             <div>
                 <p>4. El Programa Bracero fue un acuerdo entre México y Estados Unidos. <b>Verdadero o Falso</b></p>
@@ -121,10 +120,10 @@
                 <button onclick="checkAnswer('c', true)">c) Argentina</button>
             </div>
             <div>
-                <p>8. ¿Cuál de estos factores no es una causa común de migración en América Latina?</p>
-                <button onclick="checkAnswer('a', false)">a) Inestabilidad política</button>
-                <button onclick="checkAnswer('b', false)">b) Falta de empleo</button>
-                <button onclick="checkAnswer('c', true)">c) Alta tecnología</button>
+                <p>8. ¿Qué evento en los años 30 redujo drásticamente la migración hacia América Latina?</p>
+                <button onclick="checkAnswer('a', false)">A) La Segunda Guerra Mundial</button>
+                <button onclick="checkAnswer('b', false)">B) La Revolución Mexicana</button>
+                <button onclick="checkAnswer('c', true)">C) La Gran Depresión</button>
             </div>
             <div>
                 <p>9. ¿Qué país de Centroamérica es un destino común para migrantes nicaragüenses?</p>
@@ -133,14 +132,29 @@
                 <button onclick="checkAnswer('c', false)">c) El Salvador</button>
             </div>
             <div>
-                <p>10. ¿Qué tipo de migrantes predominan en las migraciones intrarregionales de América Latina?</p>
-                <button onclick="checkAnswer('a', true)">a) Trabajadores menos calificados</button>
-                <button onclick="checkAnswer('b', false)">b) Profesionales altamente calificados</button>
-                <button onclick="checkAnswer('c', false)">c) Empresarios</button>
+                <p>10. ¿Cuál fue el efecto de la crisis en Venezuela en los movimientos migratorios recientes?</p>
+                <button onclick="checkAnswer('a', true)">A) Aumentó la migración de venezolanos hacia Colombia.</button>
+                <button onclick="checkAnswer('b', false)">B) Estimuló el regreso de colombianos a su país.</button>
+                <button onclick="checkAnswer('c', false)">C) Generó una gran migración hacia Europa.</button>
             </div>
         </div>
     </section>
+    <section id="juegos">
+        <h2>Juegos: Crucigrama y Sopa de Letras</h2>
 
+        <!-- Contenedor del Crucigrama -->
+        <div id="crucigrama">
+            <h3>Crucigrama</h3>
+            <div class="crucigrama-grid"></div>
+        </div>
+
+        <!-- Contenedor de la Sopa de Letras -->
+        <div id="sopa-de-letras">
+            <h3>Sopa de Letras</h3>
+            <p>Encuentra las palabras: MIGRACION, LATINOS, REMESAS, INTRARREGIONAL, CULTURA, AMERICA, FRONTERA.</p>
+            <div class="sopa-grid"></div>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2024 Investigación Migratoria. Paloma Arrieta. Todos los derechos reservados.</p>
