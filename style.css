@@ -53,7 +53,7 @@ nav a:hover {
 /* Secciones */
 section {
     padding: 3em;
-    background: rgba(255, 255, 255, 0.79);
+    background: rgba(255, 255, 255, 0.892);
     border-radius: 15px;
     margin: 2em auto;
     max-width: 900px;
@@ -68,17 +68,7 @@ section h2 {
     text-align: center;
 }
 
-/* Caja de contenido */
-.content-box {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5em;
-    margin-bottom: 2em;
-    padding: 1.5em;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.393);
-}
+
 
 .content-header {
     display: flex;
