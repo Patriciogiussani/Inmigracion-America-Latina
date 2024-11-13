@@ -1,24 +1,33 @@
+/* Estilo global */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-image: url("./public/assets/background.jpg");
+    background: url('./public/assets/background.jpg') no-repeat center center fixed;
     background-size: cover;
-    background-attachment: fixed;
-    color: #333;
+    color: #000000;
     line-height: 1.6;
-    transition: all 0.3s ease;
+    overflow-x: hidden;
 }
 
+/* Header */
 header {
     background: linear-gradient(135deg, #ff5500, #ffcc33);
-    padding: 1.5em;
+    padding: 2em;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    animation: slideIn 1s ease-out;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #fff;
+    letter-spacing: 2px;
 }
 
 nav ul {
@@ -26,12 +35,14 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 2em;
+    margin-top: 1em;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 1.1em;
+    font-weight: 600;
     transition: color 0.3s ease;
 }
 
@@ -39,124 +50,116 @@ nav a:hover {
     color: #ffcc33;
 }
 
+/* Secciones */
 section {
-    padding: 2em;
-    background: rgba(255, 255, 255, 0.95); /* Fondo con mayor opacidad */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    margin: 1em auto;
-    max-width: 800px;
+    padding: 3em;
+    background: rgba(255, 255, 255, 0.79);
     border-radius: 15px;
+    margin: 2em auto;
+    max-width: 900px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     animation: fadeInUp 0.8s ease-in-out;
 }
 
-h2 {
+section h2 {
     color: #ff5500;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
+    font-size: 2em;
+    text-align: center;
 }
 
+/* Caja de contenido */
 .content-box {
     display: flex;
     flex-direction: column;
-    gap: 1em;
-    margin-bottom: 1em;
+    gap: 1.5em;
+    margin-bottom: 2em;
+    padding: 1.5em;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.393);
 }
 
 .content-header {
     display: flex;
-    gap: 1em;
+    gap: 1.2em;
     align-items: center;
-    cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .content-header img {
-    width: 120px;
-    height: auto;
-    border-radius: 8px;
+    width: 150px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
 
-.content-header:hover {
-    transform: translateY(-3px);
+.content-header:hover img {
+    transform: scale(1.1);
 }
 
+.content-header h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+/* Botones de quiz */
 button {
     background-color: #ff5500;
     color: white;
-    padding: 0.75em 1.5em;
+    padding: 1em 2em;
     border: none;
     cursor: pointer;
-    font-size: 1em;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1.1em;
+    border-radius: 6px;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 button:hover {
     background-color: #cc4400;
-    transform: translateY(-2px);
+    transform: translateY(-4px);
 }
 
 footer {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.611); 
     text-align: center;
     padding: 1em;
     position: fixed;
     width: 100%;
     bottom: 0;
+    left: 0;
+    color: #000000da; /* Cambié el color del texto del footer */
+    font-weight: bold;
+    font-size: 1em;
 }
 
-/* Estilo para la sección de juegos */
-#juegos {
-    padding: 2em;
-    margin: 1em auto;
-    max-width: 800px;
+/* Notificación */
+#notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff5500;
+    color: white;
+    padding: 15px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.2em;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+    display: none;
 }
 
-.crucigrama-grid, .sopa-grid {
-    display: grid;
-    gap: 2px;
-    margin-top: 1em;
+#notification.success {
+    background-color: #28a745;
 }
 
-.crucigrama-grid {
-    grid-template-columns: repeat(8, 40px);
-    grid-template-rows: repeat(8, 40px);
+#notification.error {
+    background-color: #dc3545;
 }
 
-.sopa-grid {
-    grid-template-columns: repeat(12, 30px);
-    grid-template-rows: repeat(12, 30px);
+.hidden {
+    display: none;
 }
 
-.cell, .sopa-cell {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    border: 1px solid #ccc;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cell input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    text-align: center;
-    font-size: 18px;
-    text-transform: uppercase;
-}
-
-.sopa-cell {
-    background-color: #f0f0f0;
-    cursor: pointer;
-}
-
-/* Animación de aparición */
+/* Animaciones */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -167,3 +170,15 @@ footer {
         transform: translateY(0);
     }
 }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

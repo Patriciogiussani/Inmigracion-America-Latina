@@ -1,93 +1,56 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Selección de contenedores
-    const crucigramaGrid = document.querySelector('.crucigrama-grid');
-    const sopaGrid = document.querySelector('.sopa-grid');
+ document.addEventListener('DOMContentLoaded', () => {
+    const quizButtons = document.querySelectorAll("#quiz button");
+    const notification = document.getElementById("notification");
+    const notificationText = document.getElementById("notification-text");
 
-    if (crucigramaGrid) {
-        createCrucigrama(crucigramaGrid);
-    }
-    if (sopaGrid) {
-        renderSopa(sopaGrid);
-    }
-});
-document.addEventListener('DOMContentLoaded', () => {
-    createCrucigrama();
-// Crear Crucigrama
-function createCrucigrama(container) {
-    const size = 8; // Tamaño del crucigrama
-    for (let i = 0; i < size; i++) {
-        for (let j = 0; j < size; j++) {
-            const cell = document.createElement('div');
-            cell.classList.add('cell');
-            const input = document.createElement('input');
-            input.maxLength = 1;
-            cell.appendChild(input);
-            container.appendChild(cell);
-        }
-    }
-}
-
-renderSopa();
-// Generar Sopa de Letras
-function renderSopa(container) {
-    const gridSize = 12;
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const sopaWords = ["MIGRACION", "LATINOS", "REMESAS", "INTRARREGIONAL", "CULTURA", "AMERICA", "FRONTERA"];
-    const sopaBoard = Array.from({ length: gridSize }, () => Array(gridSize).fill(''));
-
-    placeWords(sopaBoard, sopaWords);
-    fillBoardWithRandomLetters(sopaBoard, letters);
-
-    // Renderizar sopa de letras
-    sopaBoard.forEach(row => {
-        row.forEach(letter => {
-            const cell = document.createElement('div');
-            cell.classList.add('sopa-cell');
-            cell.textContent = letter;
-            container.appendChild(cell);
+    quizButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const button = e.target;
+            const isCorrect = checkAnswer(button); // Verifica si la respuesta es correcta
+            showNotification(isCorrect); // Muestra la notificación
         });
     });
-}
-
-function placeWords(board, words) {
-    words.forEach(word => {
-        let placed = false;
-        while (!placed) {
-            const direction = Math.random() > 0.5 ? 'horizontal' : 'vertical';
-            const row = Math.floor(Math.random() * board.length);
-            const col = Math.floor(Math.random() * board[0].length);
-
-            if (canPlaceWord(board, word, row, col, direction)) {
-                for (let i = 0; i < word.length; i++) {
-                    const r = direction === 'horizontal' ? row : row + i;
-                    const c = direction === 'horizontal' ? col + i : col;
-                    board[r][c] = word[i];
-                }
-                placed = true;
-            }
-        }
-    });
-}
-
-function canPlaceWord(board, word, row, col, direction) {
-    if (direction === 'horizontal' && col + word.length > board[0].length) return false;
-    if (direction === 'vertical' && row + word.length > board.length) return false;
-
-    for (let i = 0; i < word.length; i++) {
-        const r = direction === 'horizontal' ? row : row + i;
-        const c = direction === 'horizontal' ? col + i : col;
-        if (board[r][c] && board[r][c] !== '') return false;
-    }
-    return true;
-}
-
-function fillBoardWithRandomLetters(board, letters) {
-    for (let row = 0; row < board.length; row++) {
-        for (let col = 0; col < board[row].length; col++) {
-            if (!board[row][col]) {
-                board[row][col] = letters[Math.floor(Math.random() * letters.length)];
-            }
-        }
-    }
-}
 });
+
+// Función para verificar si la respuesta es correcta
+function checkAnswer(button) {
+    const correctAnswers = {
+        1: 'falso', // Asume que esta respuesta es correcta, puedes ajustar las respuestas según las preguntas
+        2: 'falso',
+        3: 'falso',
+        4: 'verdadero',
+        5: 'falso',
+        6: 'b',
+        7: 'c',
+        8: 'c',
+        9: 'b',
+        10: 'a'
+    };
+
+    const questionId = button.closest('div').querySelector('p').dataset.id;
+    const answer = button.getAttribute('data-opcion') || button.className;
+
+    return correctAnswers[questionId] === answer;
+}
+
+// Muestra una notificación
+function showNotification(isCorrect) {
+    const notification = document.getElementById("notification");
+    const notificationText = document.getElementById("notification-text");
+
+    if (isCorrect) {
+        notification.classList.remove("error");
+        notification.classList.add("success");
+        notificationText.textContent = "¡Respuesta Correcta!";
+    } else {
+        notification.classList.remove("success");
+        notification.classList.add("error");
+        notificationText.textContent = "¡Respuesta Incorrecta! Intenta nuevamente.";
+    }
+
+    notification.style.display = 'block';
+
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 3000);
+}
